@@ -1,0 +1,69 @@
+<!doctype html><html lang=ru><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Рацион</title><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0B6B55"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Рацион"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><link rel="icon" href="icons/icon-192.png"><script>if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600&display=swap">
+<style>
+:root{--bg:#EAF0EE;--surf:#FFFFFF;--ink:#0F2E29;--mute:#58706A;--line:#D3DEDA;--accent:#0B6B55;--accent-ink:#FFFFFF;--p:#1F8A6A;--f:#D9961A;--c:#4A79B5;--warn-bg:#FFF1CF;--warn-ink:#4A3600;--font-d:'Unbounded',system-ui,sans-serif;--font-b:'Onest',system-ui,-apple-system,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1917;--surf:#142623;--ink:#E3EFEB;--mute:#93ADA6;--line:#26403B;--accent:#5FD0B0;--accent-ink:#06201A;--p:#4CC9A0;--f:#F0B33C;--c:#7DA8E0;--warn-bg:#3A2F10;--warn-ink:#F6E4B0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0C1917;--surf:#142623;--ink:#E3EFEB;--mute:#93ADA6;--line:#26403B;--accent:#5FD0B0;--accent-ink:#06201A;--p:#4CC9A0;--f:#F0B33C;--c:#7DA8E0;--warn-bg:#3A2F10;--warn-ink:#F6E4B0;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--font-b);padding-block:0 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--accent)}a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+header.top{padding:44px 0 24px}
+h1{font:600 clamp(28px,5.5vw,48px)/1.1 var(--font-d);margin:0 0 14px;letter-spacing:-.02em;text-wrap:balance}
+.lead{max-width:62ch;color:var(--mute);margin:0 0 20px;font-size:17px}
+.warn{background:var(--warn-bg);color:var(--warn-ink);border-radius:12px;padding:12px 16px;max-width:76ch;margin:0 0 22px;font-size:15px}
+nav.tabs{display:flex;gap:8px;flex-wrap:wrap}
+nav.tabs a{padding:9px 16px;border-radius:999px;background:var(--surf);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+nav.tabs a:hover{border-color:var(--accent);color:var(--accent)}
+section{padding-top:44px}
+h2{font:600 clamp(22px,3.6vw,30px)/1.15 var(--font-d);margin:0 0 8px;letter-spacing:-.01em}
+.src{color:var(--mute);margin:0 0 20px;max-width:75ch;font-size:15px}
+.day{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:22px}
+.big{font:600 clamp(36px,7vw,56px)/1 var(--font-d);margin:0 0 14px;letter-spacing:-.03em}
+.big small{font:500 15px var(--font-b);color:var(--mute);letter-spacing:0;margin-left:6px}
+.bar{display:flex;height:14px;border-radius:7px;overflow:hidden;gap:3px}
+.bar i{display:block;min-width:6px}.bar .p{background:var(--p)}.bar .f{background:var(--f)}.bar .c{background:var(--c)}
+.leg{display:flex;gap:18px;flex-wrap:wrap;margin:12px 0 0;font-size:14px;color:var(--mute)}
+.leg span::before,.mac span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;background:currentColor}
+.leg .p,.mac .p{color:var(--p)}.leg .f,.mac .f{color:var(--f)}.leg .c,.mac .c{color:var(--c)}
+.leg span{color:var(--ink)}.leg span::before{background:var(--col)}.leg .p::before{background:var(--p)}.leg .f::before{background:var(--f)}.leg .c::before{background:var(--c)}
+.meals{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:18px}
+.meal{background:var(--surf);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.meal>img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--line)}
+.mb{padding:16px 18px 18px;min-width:0;display:flex;flex-direction:column;gap:6px}
+h4{margin:0;font:600 13px/1.2 var(--font-d);color:var(--mute)}
+.dish{margin:0;font-size:18px;font-weight:600;line-height:1.3;text-wrap:balance}
+.kc{margin:6px 0 0;font-size:15px;color:var(--mute)}.kc b{font:600 30px/1 var(--font-d);color:var(--ink);letter-spacing:-.02em;margin-right:4px}
+.mac{display:flex;gap:16px;margin:0;font-weight:600;font-size:15px;flex-wrap:wrap}.mac span{color:var(--ink)}.mac .p::before{background:var(--p)}.mac .f::before{background:var(--f)}.mac .c::before{background:var(--c)}
+.orig{margin:0;font-size:13px;color:var(--mute)}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
+.play{background:var(--accent);color:var(--accent-ink);text-decoration:none;padding:9px 15px;border-radius:999px;font-weight:600;font-size:14px}
+.play:hover{filter:brightness(1.08)}
+.more{padding:8px 13px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-size:14px;color:var(--ink)}
+.more:hover{border-color:var(--accent)}
+details{border-top:1px solid var(--line);margin-top:6px;padding-top:8px}summary{cursor:pointer;font-weight:600;font-size:14px;padding:4px 0}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px;margin-top:6px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}th{color:var(--mute);font-weight:600;font-size:13px}.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.note{margin:4px 0 0;font-size:13.5px;color:var(--mute)}
+.warn2{background:var(--warn-bg);color:var(--warn-ink);padding:10px 14px;border-radius:10px;font-size:14.5px;margin:0 0 18px;max-width:80ch}
+.fig{margin:22px 0 0;max-width:420px}.fig img{width:100%;border-radius:12px;display:block}.fig figcaption{font-size:13px;color:var(--mute);margin-top:6px}
+.shop{margin-top:26px;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:18px 22px}
+h3{font:600 17px var(--font-d);margin:0 0 10px}
+.sl{list-style:none;margin:0;padding:0;columns:2 280px;column-gap:32px}
+.sl li{break-inside:avoid;border-bottom:1px solid var(--line)}
+.sl label{display:flex;gap:10px;align-items:baseline;padding:8px 0;cursor:pointer}.sl label span{flex:1;min-width:0}.sl b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.sl input{accent-color:var(--accent);width:18px;height:18px;flex:none;align-self:center}
+.sl input:checked+span,.sl input:checked~b{text-decoration:line-through;color:var(--mute)}
+.skip{padding-left:20px;max-width:80ch;color:var(--mute)}.skip li{margin:8px 0}
+footer{margin-top:48px;color:var(--mute);font-size:13px}
+@media (prefers-reduced-motion:no-preference){.meal,.play{transition:transform .15s}.meal:hover{transform:translateY(-2px)}}
+.grp{margin-top:30px}.gh{display:flex;gap:6px 16px;flex-wrap:wrap;align-items:baseline;margin-bottom:12px}.gh h3{margin:0;font-size:18px}.gs{margin:0;color:var(--mute);font-size:15px}.gs b{color:var(--ink)}.fs{font-size:13.5px}.fs td,.fs th{padding:5px 7px}.fs .tot td{font-weight:600;background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.day.total{margin-top:28px}.day.total h3{margin-bottom:8px}.day.total .bar{margin-top:14px}
+.sl small.pk{display:block;font-size:12.5px;color:var(--mute);font-weight:400}
+
+.rl{display:grid;gap:12px;margin-top:20px}.rc{display:flex;flex-direction:column;gap:4px;background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-decoration:none;color:var(--ink)}
+.rc b{font:600 18px var(--font-d)}.rc span{color:var(--mute)}.rc small{color:var(--mute);font-size:13px}.rc:first-child{border-color:var(--accent)}</style></head>
+<body><div class=wrap><header class=top><h1>Рацион</h1><p class=lead>Рационы на 2500 ккал для набора массы: 3 блюда в день, заготовка на 3 дня. Сверху — текущий.</p></header>
+<div class=rl><a class=rc href="r/2026-10-27-1.html"><b>Рис с курицей, макароны, творожная запеканка</b><span>2533 ккал · Б 152 · Ж 88 · У 281</span><small>2026-10-27 · текущий</small></a></div>
+<footer>Чтобы поставить на телефон: Safari → «Поделиться» → «На экран „Домой“» (на Android: Chrome → «Установить приложение»).</footer></div></body></html>
